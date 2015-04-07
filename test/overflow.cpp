@@ -12,6 +12,10 @@
 #include <boost/test/minimal.hpp>
 #include "bugs.hpp"
 
+#ifdef _MSC_VER
+# pragma warning(disable: 4305) // truncation from 'double' to 'float'
+#endif
+
 template<class I>
 void test_one(typename I::base_type x, typename I::base_type f) {
   I y = x;

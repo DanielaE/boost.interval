@@ -13,6 +13,12 @@
 #include <boost/config.hpp>
 #include "bugs.hpp"
 
+#ifdef _MSC_VER
+# pragma warning(disable: 4305) // truncation from 'double' to 'float'
+# pragma warning(disable: 4244) // conversion from 'double' to 'float'
+# pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
+
 /* All the following tests should be BOOST_CHECK; however, if a test fails,
    the probability is high that hundreds of other tests will fail, so it is
    replaced by BOOST_REQUIRE to avoid flooding the logs. */
