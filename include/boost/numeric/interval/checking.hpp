@@ -15,6 +15,12 @@
 #include <cassert>
 #include <boost/limits.hpp>
 
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable: 4702) // unreachable code
+# pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
+
 namespace boost {
 namespace numeric {
 namespace interval_lib {
@@ -126,5 +132,9 @@ struct checking_strict:
 } // namespace interval_lib
 } // namespace numeric
 } // namespace boost
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 
 #endif // BOOST_NUMERIC_INTERVAL_CHECKING_HPP
