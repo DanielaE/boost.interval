@@ -14,6 +14,12 @@
 #include <string>
 #include <boost/numeric/interval/detail/interval_prototype.hpp>
 
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable: 4702) // unreachable code
+# pragma warning(disable: 4244) // narrowing conversion
+#endif
+
 namespace boost {
 namespace numeric {
 
@@ -111,6 +117,8 @@ private:
 
     const T& low;
     const T& up;
+  private:
+    interval_holder& operator=(const interval_holder&);
   };
 
   struct number_holder {
@@ -122,6 +130,8 @@ private:
     }
     
     const T& val;
+  private:
+    number_holder& operator=(const number_holder&);
   };
 
   typedef typename Policies::checking checking;
@@ -446,5 +456,9 @@ bool interval<T, Policies>::operator!= (const number_holder& r) const
 
 } // namespace numeric
 } // namespace boost
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 
 #endif // BOOST_NUMERIC_INTERVAL_INTERVAL_HPP
