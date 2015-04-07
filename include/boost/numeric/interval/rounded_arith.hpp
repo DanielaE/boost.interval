@@ -14,6 +14,11 @@
 #include <boost/numeric/interval/detail/bugs.hpp>
 #include <boost/config/no_tr1/cmath.hpp>
 
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable: 4244) // narrowing conversion
+#endif
+
 namespace boost {
 namespace numeric {
 namespace interval_lib {
@@ -116,5 +121,9 @@ struct rounded_arith_opp: Rounding {
 } // namespace interval_lib
 } // namespace numeric
 } // namespace boost
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 
 #endif // BOOST_NUMERIC_INTERVAL_ROUNDED_ARITH_HPP
